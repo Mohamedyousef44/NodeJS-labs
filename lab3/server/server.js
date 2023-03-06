@@ -8,10 +8,10 @@ var PORT = process.env.PORT || '7000' ;
 const express = require('express');
 var fs = require('fs');
 var path = require('path');
-let welcomeHtml = fs.readFileSync('./welcome.html').toString();
+let welcomeHtml = fs.readFileSync('../client/welcome.html').toString();
 
 var options = {
-    root: path.join(__dirname)
+    root: path.join(__dirname , '../Client/')
 };
 
 const app = new express();
@@ -49,8 +49,11 @@ app.get('/welcome.html' , (req , res)=>{
 
 app.get('/clients.json' , (req , res)=>{
 
-    var fileName = 'clients.json' ;
-    res.sendFile( fileName , options)
+    var options = {
+        root: path.join(__dirname)
+    };
+    var fileName = 'clients.json'
+    res.sendFile( fileName, options )
 
 })
 app.get('/favicon.ico' , (req , res)=>{
