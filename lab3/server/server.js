@@ -80,7 +80,7 @@ app.post('/welcome.html' ,(req , res)=>{
     client.phone = req.body.phone;
 
     users.push(client);
-    fs.writeFile('clients.json' , `${JSON.stringify(users)}`, ()=>{});
+    fs.writeFile('clients.json' , `${JSON.stringify(users)}`, ()=>{})
     welcomeHtml = welcomeHtml.replace("{username}",client.username);
     res.sendFile('/welcome.html' , options)
 
